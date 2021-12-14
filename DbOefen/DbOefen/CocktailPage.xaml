@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DbOefen.CocktailPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Geef hier de naam van een cocktail in:"/>
+            <Entry x:Name="CocktailNameEntry" Placeholder="NAME"/>
+            <Button x:Name="ZoekCocktailNameButton" Text="Zoek" Clicked="ZoekCocktailNameButton_Clicked"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

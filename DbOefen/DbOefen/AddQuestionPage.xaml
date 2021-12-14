@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DbOefen.AddQuestionPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <ListView x:Name="QuestionListView"
+                      ItemSelected="QuestionListView_ItemSelected"
+                      IsPullToRefreshEnabled="True">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Text="{Binding QuestionBody}" TextColor="{StaticResource AppTertiary}"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <StackLayout>
+                <Label Text="Geef hier een nieuwe vraag in."/>
+                <Entry x:Name="QuestionEntry" Placeholder="Max 200 tekens!"/>
+                <Button x:Name="SaveButton" Text="Save" Clicked="SaveButton_Clicked"/>
+            </StackLayout>
+            <StackLayout>
+                <Button x:Name="APIStuffButton"  Text="API stuff" Clicked="APIStuffButton_Clicked"/>
+            </StackLayout>
+        </StackLayout>
+
+    </ContentPage.Content>
+</ContentPage>
