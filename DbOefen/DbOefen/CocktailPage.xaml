@@ -4,9 +4,43 @@
              x:Class="DbOefen.CocktailPage">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Geef hier de naam van een cocktail in:"/>
-            <Entry x:Name="CocktailNameEntry" Placeholder="NAME"/>
-            <Button x:Name="ZoekCocktailNameButton" Text="Zoek" Clicked="ZoekCocktailNameButton_Clicked"/>
+            <StackLayout>
+                <Label Text="Geef hier de naam van een cocktail in:"/>
+                <Entry x:Name="CocktailNameEntry" Placeholder="NAME"/>
+                <Button x:Name="ZoekCocktailNameButton" Text="Zoek" Clicked="ZoekCocktailNameButton_Clicked"/>
+            </StackLayout>
+            <StackLayout>
+                <ListView x:Name="CocktailListView">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid Padding="10">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Image Grid.RowSpan="2"
+                                           Source="{Binding strDrinkThumb}"
+                                           Aspect="AspectFill"
+                                           HeightRequest="60"
+                                           WidthRequest="60"/>
+                                    <Label Grid.Column="1"
+                                           Text="{Binding strDrink}"
+                                           FontAttributes="Bold"/>
+                                    <Label Grid.Row="1"
+                                           Grid.Column="1"
+                                           Text="{Binding strCategory}"
+                                           VerticalOptions="End"/>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -18,9 +18,11 @@ namespace DbOefen
             InitializeComponent();
         }
 
-        private void ZoekCocktailNameButton_Clicked(object sender, EventArgs e)
+        private async void ZoekCocktailNameButton_Clicked(object sender, EventArgs e)
         {
-            var cocktails = CocktailLogic.GetCocktailsByName(CocktailNameEntry.Text);
+            var cocktails = await CocktailLogic.GetCocktailsByName(CocktailNameEntry.Text);
+
+            CocktailListView.ItemsSource = cocktails;
         }
     }
 }

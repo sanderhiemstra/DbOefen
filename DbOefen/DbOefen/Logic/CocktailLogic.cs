@@ -1,4 +1,5 @@
 ﻿using DbOefen.Model;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
@@ -9,9 +10,9 @@ namespace DbOefen.Logic
 {
     public class CocktailLogic
     {
-        public async static Task<List<Cocktail>> GetCocktailsByName(string name)
+        public async static Task<List<Drink>> GetCocktailsByName(string name)
         {
-            List<Cocktail> cocktails = new List<Cocktail>();
+            List<Drink> cocktails = new List<Drink>();
 
             var url = Cocktail.GenerateURLName(name);
 
@@ -19,6 +20,8 @@ namespace DbOefen.Logic
             {
                 var response = await client.GetAsync(url);
                 var json = await response.Content.ReadAsStringAsync();
+                var cocktailByNameResponse = JsonConvert.DeserializeObject<CocktailsByNameResponse>(json);
+                cocktails = cocktailByNameResponse.Drinks as List<Drink>;
             }
 
             return cocktails;
